@@ -1,0 +1,20 @@
+# Firebase credentials
+firebase_credentials.json
+
+# Environment variables / API keys
+.env
+
+# Python
+__pycache__/
+*.pyc
+
+# Virtual environment
+.venv/
+venv/
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_Store

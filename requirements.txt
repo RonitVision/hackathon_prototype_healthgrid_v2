@@ -1,0 +1,11 @@
+fastapi
+uvicorn
+streamlit
+streamlit-folium
+streamlit-autorefresh
+folium
+requests
+firebase-admin
+ortools
+google-genai
+pydantic
