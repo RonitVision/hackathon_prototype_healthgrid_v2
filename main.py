@@ -302,10 +302,11 @@ CURRENT DETECTED EARLY WARNINGS:
         raise
 
     except Exception as e:
-        raise HTTPException(
-            status_code=500,
-            detail=f"Gemini analysis failed: {str(e)}"
-        )
+    print(f"GEMINI ERROR: {repr(e)}")
+    raise HTTPException(
+        status_code=500,
+        detail=f"Gemini analysis failed: {str(e)}"
+    )
 
 # OR-TOOLS REDISTRIBUTION
 
