@@ -31,6 +31,8 @@ st.caption(
 
 if "gemini_analysis" not in st.session_state:
     st.session_state.gemini_analysis = None
+if "telemetry_snapshot" not in st.session_state:
+    st.session_state.telemetry_snapshot = None
 
 def get_json(endpoint):
     try:
@@ -63,6 +65,18 @@ if page == "National Command Center":
 
     if payload is not None:
         data = payload.get("data", [])
+
+    # Detect changes in live telemetry
+        current_snapshot = str(data)
+
+        if st.session_state.telemetry_snapshot is None:
+            st.session_state.telemetry_snapshot = current_snapshot
+
+        elif st.session_state.telemetry_snapshot != current_snapshot:
+        # Current telemetry changed, so previous Gemini analysis is stale
+            st.session_state.gemini_analysis = None
+            st.session_state.telemetry_snapshot = current_snapshot
+
 
         col1, col2, col3, col4 = st.columns(4)
         col1.metric("Active PHC Nodes", len(data))
